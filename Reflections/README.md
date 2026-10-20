@@ -1,19 +1,11 @@
-Here are all the reflections, one for each class session.
-Make sure you plan some time (<10min) on the day of the session
+Here are all the reflections — one per teaching block or session, as your syllabus specifies.
+Make sure you plan some time on the day of the session
 to remember interesting points of the session.
 
-They will be named ref01.md to refnn.md
+They will be named `ref01.md` to `refNN.md`.
 
-As a reminder, we expect the following in a reflection:
+Use the [reflection template](TEMPLATE.md): copy it to a new `refNN.md`
+and answer the prompts there. The template includes the **AI-verification** question.
 
-- What is your take-away, what do you want to remember, what would be your advice?
-  Take-away can be small summary, but better outstanding points.
-- What was good?
-- What was difficult, where did you struggle?
-- Was there any good/fun “struggling”/exploration?
-  Any show stoppers – anything where you should reach out to peers or instructors? 
-- How was your interaction with peers/instructors?
-- Help and extra work
-  - Who helped you, gave feedback, was it valuable?
-  - Who did you help, gave feedback to?
-  - Did you present, implement, made a PR, or fix something that was crucial for the class in itself?
+`ref02.md` spells the prompts out as a worked example; the other reflection files
+can simply link back to the template and contain your answers.

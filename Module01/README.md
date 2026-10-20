@@ -1,5 +1,7 @@
 # Module 1
 
+> **Example module** from the IoT introduction class. Adjust the headings and tasks to match your actual course content.
+
 
 > When you start editing this file, remove this description.
 >
@@ -40,4 +42,4 @@ Challenges:
 -
 
 ## Reflection 1
-[Reflection 1](Reflections/ref01.md)
+[Reflection 1](../Reflections/ref01.md)

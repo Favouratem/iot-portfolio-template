@@ -2,13 +2,13 @@
 
 > When you start editing this file, remove this description.
 >
-> Fork this repository (or use it as template).
+> Use this repository as a **template** (do not fork it).
 > Everything that you do for this class should be documented here
 > as well as include documented links for the work of your peers.
 > This is an artifact that you can come back to any time later to
 > connect and remember this class. It might even come in handy for
 > a job application where projects are more important than grades. 
-> We recommend to make this portfolio private and to share it with your peers
+> Make this portfolio **public** (or at least readable by your instructor) and share it with your peers
 > (initially you will have a partner, later several team or group-mates).
 > You will mainly document your own work in this git repository.
 > If you work on a module in a team and distribute several tasks among your peers,
@@ -33,7 +33,12 @@
 > For the final project consider having its own repository, but still document
 > your own work here and link to the produced artifacts in that project repository.
 >
-> Start with module 1: have a small log (keywords are fine, we appreciate sentences, but can read keywords quicker as you usually have to present your tasks to an instructor this is more a help for yourself than for us) and pictures from class and lab tasks in here. 
+> Start with the optional `PreStudy/` folder (if your class has a pre-study) and then Module 1: have a small log (keywords are fine, we appreciate sentences, but can read keywords quicker as you usually have to present your tasks to an instructor this is more a help for yourself than for us) and pictures from class and lab tasks in here.
+>
+> **`Module01` and `Module02` are examples** from the IoT introduction class. Adjust their headings, tasks, and reflections to match your actual course content.
+> Create further modules as `Module03`, `Module04`, … — always a capital `M` and two digits, matching `Module01` and `Module02`.
+>
+> **`PreStudy/` is optional.** Not all classes have a pre-study. If yours does not, simply delete the folder and remove it from the table of contents.
 > Any code goes into git repo (needs to be linked in portfolio). If you use example codes without changes, you can also link to it.
 >
 > Resources:
@@ -57,9 +62,10 @@ My personal profile and expectations, you can find [here](Module01/README.md#tas
 
 ## Table of Contents
 
-- [Module 1: IoT Introduction](Module01/README.md), 
+- [Pre-study (optional)](PreStudy/README.md)
+- [Module 1: IoT Introduction — example](Module01/README.md), 
   [Reflection 1](Reflections/ref01.md)
-- [Module 2: Hardware and Basic Electronics](Module02/README.md),
+- [Module 2: Hardware and Basic Electronics — example](Module02/README.md),
   [Reflection 2](Reflections/ref02.md), [Reflection 3](Reflections/ref03.md)
 - ...
 
