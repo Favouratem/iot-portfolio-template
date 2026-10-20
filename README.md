@@ -37,6 +37,7 @@
 >
 > **`Module01` and `Module02` are examples** from the IoT introduction class. Adjust their headings, tasks, and reflections to match your actual course content.
 > Create further modules as `Module03`, `Module04`, … — always a capital `M` and two digits, matching `Module01` and `Module02`.
+> Use [ModuleNN.md](ModuleNN.md) as the content template for a new module; copy it into `Module03/README.md`, `Module04/README.md`, … and fill in the placeholders.
 >
 > **`PreStudy/` is optional.** Not all classes have a pre-study. If yours does not, simply delete the folder and remove it from the table of contents.
 > Any code goes into git repo (needs to be linked in portfolio). If you use example codes without changes, you can also link to it.
