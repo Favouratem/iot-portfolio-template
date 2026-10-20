@@ -55,8 +55,7 @@ It is [here](https://github.com/partner/iot-portfolio/Module02/README.md#task-2)
 
 [Reflection 2](../Reflections/ref02.md)
 
-> A module can span several days, so you might have to link two reflections.
+If the module is longer than 1 week, you might have several reflections within it. If not, delete this and the following.
 
 ## Reflection 3
-
 [Reflection 3](../Reflections/ref03.md)
