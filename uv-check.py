@@ -8,4 +8,5 @@ for pkg in ("duckdb", "datasette", "sqlite-utils", "pydantic", "sqlalchemy"):
     try:
         print(f"{pkg:18s}", version(pkg))
     except PackageNotFoundError:
-        print(f"{pkg:18s}", "NOT INSTALLED")
+        print(f"{pkg:18s}", "NOT INSTALLED") 
+        
