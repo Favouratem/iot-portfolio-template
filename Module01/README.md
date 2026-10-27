@@ -1,10 +1,19 @@
 # Module 1
 
-Task 1
+Story Question;
+
+Wittkamp Zerspanung GmbH is a small machine shop in Gütersloh that wants to monitor its CNC milling machines. The vendor Cirrus Cloud Systems proposes the classic setup: a cloud server, a PostgreSQL instance, a REST backend, a React frontend, and a monthly invoice. The plant manager, Kai Lehmann — an HSBI Industrial Engineering alum — asks one question the vendor cannot answer cheaply: "How many rows per day, and who else is reading this?"
 
 Module description
+1) Explain how this class works — the CBL/PBL philosophy, the portfolio-based project work assessment, and the "moving bar" of a first-time course.
+2) Set up your personal GitHub portfolio from the course template, with a clean first commit and a .gitignore that keeps databases and secrets out of Git.
+3) Set up the entire toolchain reproducibly with uv — one fixed Python plus SQLite, DuckDB, Datasette, and more — on Windows, macOS, or Linux, and verify it.
+4) Explain — with a measurement, not a slide — the difference between an embedded database and a client/server database, and why most local apps should not run a server.
+5) Load real rows into SQLite and query them from Python using bound parameters.
+6) Take a first LLM-generated query, run it, and begin the habit that defines this course: verify before you trust.
 
-## Learning Goals
+
+
 
 > **How to use the learning goals.** Copy the module's learning goals from the course workbook into the block below. Keep the `LG1`, `LG2`, … IDs and a one-word keyword. In each task, write `Proves: LG2` (or link to `[LG2](#lg2)`) so you can find the evidence quickly at checkpoint time. In the **Evidence** line under each goal, link to the task that proves it.
 
