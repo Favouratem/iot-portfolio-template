@@ -188,8 +188,8 @@ Think of it like this:
 **SQL Island** is an interactive learning game for practicing SQL. You follow a story on an island and enter SQL queries to solve tasks using information stored in database tables. As you progress, you practice concepts such as `SELECT`, filtering with `WHERE`, sorting, and combining tables with joins.
 
 Unlike SQLite dot-commands—which control the SQLite shell—SQL Island focuses on writing SQL statements to retrieve and work with data.
-![alt text](<../../images/Screenshot 2026-10-28 224316.png>)
-![alt text](<../../images/Screenshot 2026-10-28 224506.png>)
+
+![alt text](<images/Screenshot 2026-10-28 224316.png>)
 
 [Task 6: Load real telemetry and query it from Python](#task-what-is-iot)
 
