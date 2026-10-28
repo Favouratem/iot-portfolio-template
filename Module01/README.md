@@ -27,6 +27,7 @@ Explain how this class works — the CBL/PBL philosophy, the portfolio-based pro
 
 Set up your personal GitHub portfolio from the course template, with a clean first commit and a .gitignore that keeps databases and secrets out of Git.
 ## TEAM ##
+Sara el hazmiri -https://github.com/selhazmiri
 louay -https://github.com/louayXO
 Favour Atem -https://github.com/Favouratem
 
