@@ -1,7 +1,11 @@
 # Module 1
 Story Question;
 Wittkamp Zerspanung GmbH is a small machine shop in Gütersloh that wants to monitor its CNC milling machines. The vendor Cirrus Cloud Systems proposes the classic setup: a cloud server, a PostgreSQL instance, a REST backend, a React frontend, and a monthly invoice. The plant manager, Kai Lehmann — an HSBI Industrial Engineering alum — asks one question the vendor cannot answer cheaply: "How many rows per day, and who else is reading this?"
+# answer #
+Kai Lehmann's question challenges whether the proposed cloud architecture is actually justified for a small machine shop.
+[ Who else is reading this?] -addresses data ownership and privacy. If the data is sent to a cloud service, it may be accessed by the vendor's infrastructure, administrators, backup systems, monitoring tools, or third-party services involved in running the platform. The plant manager wants to know why the data needs to leave the factory at all if the primary users are local engineers and machine operators.
 
+Looking at the telemetry example in the module, each CNC machine records one reading every 3 seconds. With three machines, that produces 86,400 rows per day (28,800 readings per machine per day × 3 machines). This is a relatively small amount of data that can easily be handled by an embedded database such as SQLite on a local PC or industrial gateway
 Module description
 1) Explain how this class works — the CBL/PBL philosophy, the portfolio-based project work assessment, and the "moving bar" of a first-time course.
 2) Set up your personal GitHub portfolio from the course template, with a clean first commit and a .gitignore that keeps databases and secrets out of Git.
@@ -190,7 +194,7 @@ Think of it like this:
 Unlike SQLite dot-commands—which control the SQLite shell—SQL Island focuses on writing SQL statements to retrieve and work with data.
 
 ![alt text](<images/Screenshot 2026-10-28 224316.png>)
-
+![alt text](<images/Screenshot 2026-10-28 224506.png>)
 [Task 6: Load real telemetry and query it from Python](#task-what-is-iot)
 
 ```python
