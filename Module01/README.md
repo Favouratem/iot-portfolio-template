@@ -15,9 +15,6 @@ Module description
 6) Take a first LLM-generated query, run it, and begin the habit that defines this course: verify before you trust.
 
 ## Learning Goals
-
-> **How to use the learning goals.** Copy the module's learning goals from the course workbook into the block below. Keep the `LG1`, `LG2`, … IDs and a one-word keyword. In each task, write `Proves: LG2` (or link to `[LG2](#lg2)`) so you can find the evidence quickly at checkpoint time. In the **Evidence** line under each goal, link to the task that proves it.
-
 <a id="lg1"></a>
 ### LG1 — `<CBL/PBL>`
 
