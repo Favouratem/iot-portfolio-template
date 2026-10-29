@@ -21,7 +21,7 @@ Module description
 
 Explain how this class works — the CBL/PBL philosophy, the portfolio-based project work assessment, and the "moving bar" of a first-time course
 
-**Evidence:** [Task Inspirations](#task-inspirations)
+
 
 <a id="lg2"></a>
 ### LG2 — `<GitHub portfolio>`
@@ -48,11 +48,9 @@ Installing a toolchain with uv means using the uv package manager to create a re
 
 
  [## Task 3: Install your whole toolchain with uv ##](#task-what-is-iot)
-![alt text](<Screenshot 2026-10-19 124449 - Copy.png>) UV installation in VS.code Using powershell 
-![alt text](<Screenshot 2026-10-19 124449.png>)
-![alt text](<Screenshot 2026-10-19 124518.png>)
-![alt text](<Screenshot 2026-10-19 124740.png>)
-![alt text](<Screenshot 2026-10-19 124612.png>)
+ ![alt text](<images/Screenshot 2026-10-19 124449.png>)
+![alt text](<images/Screenshot 2026-10-19 124449 - Copy.png>)
+![alt text](<images/Screenshot 2026-10-19 124740.png>)
 
 [## Task 4: Meet the sqlite3 shell ##](#task-what-is-iot)
 Description:
@@ -95,9 +93,8 @@ Create Module01/shell-tour.txt containing .tables, .schema, and a timed query.
 Create Module01/tour.sql using the .dump command.
 Write one sentence explaining which dot-command you found most useful and why.
 
-![alt text](<Screenshot 2026-10-21 203232.png>) exploring the Dot command and SQL Commands 
-
-![alt text](<Screenshot 2026-10-21 203232.png>)
+![alt text](<images/Screenshot 2026-10-21 203232.png>) 
+![alt text](<images/Screenshot 2026-10-21 203432.png>)
 
 DOt and SQL 
 <style>
@@ -198,8 +195,35 @@ Unlike SQLite dot-commands—which control the SQLite shell—SQL Island focuses
 ![alt text](<images/Screenshot 2026-10-28 224506.png>)
 [Task 6: Load real telemetry and query it from Python](#task-what-is-iot)
 
-![alt text](<../../images/Screenshot 2026-10-28 230511.png>)
-![alt text](<Screenshot 2026-10-24 162627.png>)
+```python
+"""Load Module01/telemetry.csv into Module01/telemetry.db (no sqlite3 shell needed)."""
+import csv, sqlite3
+from pathlib import Path
+
+here = Path(__file__).parent
+csv_path = here / "telemetry.csv"
+db_path = here / "telemetry.db"
+
+conn = sqlite3.connect(db_path)
+conn.executescript("""
+    DROP TABLE IF EXISTS readings;
+    CREATE TABLE readings(
+        ts           TEXT    NOT NULL,
+        machine      TEXT    NOT NULL,
+        temp_c       REAL    NOT NULL,
+        vib_rms      REAL    NOT NULL,
+        spindle_load REAL    NOT NULL
+    );
+""")
+with csv_path.open(newline="") as f:
+    rows = csv.reader(f)
+    next(rows)                                   # skip the header
+    conn.executemany("INSERT INTO readings VALUES (?, ?, ?, ?, ?)", rows)
+conn.commit()
+n = conn.execute("SELECT COUNT(*) FROM readings").fetchone()[0]
+print(f"loaded {n} rows into {db_path}")
+conn.close()
+```
 
 
 <a id="lg4"></a>
