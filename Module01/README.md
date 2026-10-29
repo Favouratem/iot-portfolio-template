@@ -1,6 +1,6 @@
 # Module 1
 Story Question;
-Wittkamp Zerspanung GmbH is a small machine shop in Gütersloh that wants to monitor its CNC milling machines. The vendor Cirrus Cloud Systems proposes the classic setup: a cloud server, a PostgreSQL instance, a REST backend, a React frontend, and a monthly invoice. The plant manager, Kai Lehmann — an HSBI Industrial Engineering alum — asks one question the vendor cannot answer cheaply: "How many rows per day, and who else is reading this?"
+Wittkamp Zerspanung GmbH is a small machine shop in Gütersloh that wants to monitor its CNC milling machines. The vendor Cirrus Cloud Systems proposes the classic setup: a cloud server, a PostgreSQL instance, a REST backend, a React frontend, and a monthly invoice. The plant manager, Kai Lehmann — a HSBI Industrial Engineering alumna — asks one question the vendor cannot answer cheaply: "How many rows per day, and who else is reading this?"
 # answer #
 Kai Lehmann's question challenges whether the proposed cloud architecture is actually justified for a small machine shop.
 [ Who else is reading this?] -addresses data ownership and privacy. If the data is sent to a cloud service, it may be accessed by the vendor's infrastructure, administrators, backup systems, monitoring tools, or third-party services involved in running the platform. The plant manager wants to know why the data needs to leave the factory at all if the primary users are local engineers and machine operators.
@@ -32,8 +32,12 @@ Explain how this class works — the CBL/PBL philosophy, the portfolio-based pro
 Set up your personal GitHub portfolio from the course template, with a clean first commit and a .gitignore that keeps databases and secrets out of Git.
 ## TEAM ##
 Sara el hazmiri -https://github.com/selhazmiri
+
 louay -https://github.com/louayXO
+
 Favour Atem -https://github.com/Favouratem
+
+John Manu Opoku
 
 
 
@@ -197,6 +201,217 @@ Unlike SQLite dot-commands—which control the SQLite shell—SQL Island focuses
 ![alt text](<images/Screenshot 2026-10-28 224506.png>)
 [Task 6: Load real telemetry and query it from Python](#task-what-is-iot)
 
+![alt text](<../../images/Screenshot 2026-10-28 230511.png>)
+![alt text](<Screenshot 2026-10-24 162627.png>)
+
+
+<a id="lg4"></a>
+### LG4 — `<embedded database and a client/server database>`
+
+The cleanest way to explain the difference is with a **measurement of data access latency**.
+
+Imagine a simple query:
+
+> “Get customer #1234”.
+
+### Embedded database
+
+Examples: SQLite, DuckDB
+
+The application and the database engine run in the **same process**.
+
+```
+App
+ └─ SQLite library
+     └─ local file
+```
+
+A request looks like:
+
+```
+Function call -> database engine -> file
+```
+
+Typical overhead:
+
+- No network stack
+- No TCP connection
+- No serialisation/deserialisation
+- No context switch to another server process
+
+The extra cost is often measured in **microseconds (µs)**.
+
+Example measurement:
+
+```
+Direct function call to embedded DB:
+~10–100 µs overhead
+```
+
+---
+
+### Client/server database
+
+Examples: PostgreSQL, MySQL, SQL Server
+
+The database runs as a separate service.
+
+```
+App  <----TCP/IP---->  Database Server
+```
+
+A request looks like:
+
+```
+Function call
+→ serialise query
+→ kernel/network stack
+→ database server process
+→ execute
+→ serialise result
+→ return
+```
+
+Even on the same machine ("localhost"), you still pay for IPC/network communication.
+
+Typical overhead:
+
+```
+~0.2–2 ms
+```
+
+That's **hundreds to thousands of microseconds**.
+
+| Architecture | Overhead per request |
+|---|---:|
+| Embedded DB | ~10–100 µs |
+| Client/server DB | ~200–2000 µs |
+
+The exact numbers vary, but the relationship is what matters:
+
+**Client/server communication is usually one or more orders of magnitude slower than an in-process call.**
+
+---
+
+## Why most local apps should not run a server
+
+For a desktop or local IoT application, a database server often solves problems you don't actually have.
+
+### 1. More memory
+
+Instead of:
+
+```
+myapp.exe
+```
+
+you now have:
+
+```
+myapp.exe
+postgres.exe
+```
+
+or
+
+```
+myapp.exe
+mysqld.exe
+```
+
+A separate server consumes RAM continuously, even when idle.
+
+---
+
+### 2. More CPU
+
+The server must:
+
+- manage connections
+- schedule sessions
+- handle authentication
+- parse network messages
+- maintain background workers
+
+even though only one local application is using it.
+
+---
+
+### 3. More deployment complexity
+
+With an embedded database you ship:
+
+```
+myapp.exe
+data.db
+```
+
+With a server database you may need:
+
+- service installation
+- server configuration
+- user accounts
+- passwords
+- upgrades
+- backup configuration
+
+More moving parts means more failures.
+
+---
+
+### 4. More security surface
+
+A server typically exposes a port:
+
+```
+localhost:5432
+localhost:3306
+```
+
+Now there is something listening for connections.
+
+An embedded database usually exposes **nothing at all**.
+
+---
+
+### 5. No scalability benefit for a single-user app
+
+The main reason to use a client/server database is:
+
+- many users
+- many machines
+- remote access
+- centralised administration
+
+A notes app, personal dashboard, engineering tool, local IoT logger, or desktop game usually has none of these requirements.
+
+---
+
+## Rule of thumb
+
+Use an **embedded database** when:
+
+- one user
+- one machine
+- local data
+- simple deployment
+
+Use a **client/server database** when:
+
+- multiple clients need simultaneous access
+- data must be shared across machines
+- central administration is required
+- network access is a feature, not an accident
+
+So the measurable difference is that an embedded database avoids the network/process boundary and typically reduces request overhead from **milliseconds to microseconds**. Most local applications gain faster access, lower resource usage, simpler deployment, and a smaller attack surface by using an embedded database instead of running a database server.
+
+
+
+<a id="lg5"></a>
+### LG5 — `<real rows>`
+
+Load real rows into SQLite and query them from Python using bound parameters.
+
 ```python
 import csv, math, random
 from pathlib import Path
@@ -227,22 +442,6 @@ with out.open("w", newline="") as f:
 print(f"wrote {out} ({out.stat().st_size/1e6:.1f} MB, {points * len(machines)} rows)")
 ```
 
-![alt text](<../../images/Screenshot 2026-10-28 230511.png>)
-![alt text](<Screenshot 2026-10-24 162627.png>)
-
-
-<a id="lg4"></a>
-### LG4 — `<embedded database and a client/server database>`
-
-Explain — with a measurement, not a slide — the difference between an embedded database and a client/server database, and why most local apps should not run a server.
-
-
-**Evidence:** [Task What is IoT](#task-what-is-iot)
-
-<a id="lg5"></a>
-### LG5 — `<real rows>`
-
-<Load real rows into SQLite and query them from Python using bound parameters.>
 
 **Evidence:** [Task What is IoT](#task-what-is-iot)
 <a id="task-inspirations"></a>
@@ -250,9 +449,29 @@ Explain — with a measurement, not a slide — the difference between an embedd
 <a id="lg6"></a>
 ### LG6 — `<LLM-generated query>`
 
-<Take a first LLM-generated query, run it, and begin the habit that defines this course: verify before you trust.>
 
-**Evidence:**## Working with the telemetry database
+Take a first LLM-generated query, run it, and begin the habit that defines this course: verify before you trust.
+
+```sql
+SELECT
+    machine,
+    AVG(spindle_load) AS avg_spindle_load
+FROM readings
+WHERE time(ts) >= '18:00:00'
+GROUP BY machine
+ORDER BY avg_spindle_load DESC;
+```
+
+### What to check in generated SQL
+
+Generated SQL can look correct but still return misleading results. For this query:
+
+- `time(ts) >= '18:00:00'` includes readings from 18:00 through midnight, but excludes early-morning readings. If “overnight” means 18:00–06:00, the filter must also include times before 06:00.
+- Grouping only by `machine` combines matching readings across all dates in the table.
+- `AVG` ignores `NULL` spindle-load values, so the average may use fewer rows than expected.
+- Applying `time()` to `ts` can make it harder for SQLite to use a regular index on the timestamp column.
+
+Always compare the query with the table schema and intended time range, then test the results against a few known rows. If a query is later built using user input, use bound parameters rather than inserting input directly into SQL.
 
 
 
