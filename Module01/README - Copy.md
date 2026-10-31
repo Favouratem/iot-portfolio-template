@@ -1,4 +1,15 @@
 # Module 1
+
+## Table of Contents
+
+- [Task 1: Course and CBL/PBL overview](#task-1)
+- [Task 2: GitHub portfolio setup](#task-2)
+- [Task 3: Install the toolchain with uv](#task-3)
+- [Task 4: Meet the SQLite shell](#task-4)
+- [Task 5: Play SQL Island](#task-5)
+- [Task 6: Load telemetry and query it from Python](#task-6)
+- [Reflection 1](#reflection-1)
+
 Story Question;
 Wittkamp Zerspanung GmbH is a small machine shop in Gütersloh that wants to monitor its CNC milling machines. The vendor Cirrus Cloud Systems proposes the classic setup: a cloud server, a PostgreSQL instance, a REST backend, a React frontend, and a monthly invoice. The plant manager, Kai Lehmann — an HSBI Industrial Engineering alum — asks one question the vendor cannot answer cheaply: "How many rows per day, and who else is reading this?"
 # answer #
@@ -18,6 +29,7 @@ Module description
 
 > **How to use the learning goals.** Copy the module's learning goals from the course workbook into the block below. Keep the `LG1`, `LG2`, … IDs and a one-word keyword. In each task, write `Proves: LG2` (or link to `[LG2](#lg2)`) so you can find the evidence quickly at checkpoint time. In the **Evidence** line under each goal, link to the task that proves it.
 
+<a id="task-1"></a>
 <a id="lg1"></a>
 ### LG1 — `<CBL/PBL>`
 
@@ -26,6 +38,7 @@ Explain how this class works — the CBL/PBL philosophy, the portfolio-based pro
 
 **Evidence:** [Task Inspirations](#task-inspirations)
 
+<a id="task-2"></a>
 <a id="lg2"></a>
 ### LG2 — `<GitHub portfolio>`
 
@@ -46,18 +59,20 @@ John Manu Opoku
 
 ## Set up the entire toolchain reproducibly with uv — one fixed Python plus SQLite, DuckDB, Datasette, and more — on Windows, macOS, or Linux, and verify it.## 
 
+<a id="task-3"></a>
 ## Task 3: Install your whole toolchain with uv ##
 Installing a toolchain with uv means using the uv package manager to create a reproducible Python development environment. You install uv, pin a specific Python version (3.14), create an isolated virtual environment, and install all required tools and libraries such as DuckDB, Datasette, sqlite-utils, Pydantic, and SQLAlchemy. uv automatically manages dependencies, generates lock files for reproducibility, and ensures the same setup works consistently across Windows, macOS, and Linux
 
 
- [## Task 3: Install your whole toolchain with uv ##](#task-what-is-iot)
+ [## Task 3: Install your whole toolchain with uv ##](#task-3)
 ![alt text](<Screenshot 2026-10-19 124449 - Copy.png>) UV installation in VS.code Using powershell 
 ![alt text](<Screenshot 2026-10-19 124449.png>)
 ![alt text](<Screenshot 2026-10-19 124518.png>)
 ![alt text](<Screenshot 2026-10-19 124740.png>)
 ![alt text](<Screenshot 2026-10-19 124612.png>)
 
-[## Task 4: Meet the sqlite3 shell ##](#task-what-is-iot)
+<a id="task-4"></a>
+[## Task 4: Meet the sqlite3 shell ##](#task-4)
 Description:
  Task 4 introduces you to the SQLite command-line shell and its special dot-commands (such as .tables, .schema, and .timer) that help you inspect and manage databases. The goal is to become familiar with the basic tools you will use throughout the course.
 
@@ -126,7 +141,7 @@ DOt and SQL
   </thead>
   <tbody>
     <tr>
-      <td>Start with a dot (<code>.</code>)</td>
+      <td>Start with a dot (<code>.</code>)</td> 
       <td>End with a semicolon (<code>;</code>)</td>
     </tr>
     <tr>
@@ -192,14 +207,16 @@ Think of it like this:
 - `.tables` = "Show me what tables exist."
 - `SELECT * FROM reading;` = "Show me the data inside the table."
 
-[Task 5: Play SQL Island (~30 minutes)](#task-what-is-iot)
+<a id="task-5"></a>
+[Task 5: Play SQL Island (~30 minutes)](#task-5)
 **SQL Island** is an interactive learning game for practicing SQL. You follow a story on an island and enter SQL queries to solve tasks using information stored in database tables. As you progress, you practice concepts such as `SELECT`, filtering with `WHERE`, sorting, and combining tables with joins.
 
 Unlike SQLite dot-commands—which control the SQLite shell—SQL Island focuses on writing SQL statements to retrieve and work with data.
 
 ![alt text](<images/Screenshot 2026-10-28 224316.png>)
 ![alt text](<images/Screenshot 2026-10-28 224506.png>)
-[Task 6: Load real telemetry and query it from Python](#task-what-is-iot)
+<a id="task-6"></a>
+[Task 6: Load real telemetry and query it from Python](#task-6)
 
 ![alt text](<../../images/Screenshot 2026-10-28 230511.png>)
 ![alt text](<Screenshot 2026-10-24 162627.png>)
@@ -443,7 +460,7 @@ print(f"wrote {out} ({out.stat().st_size/1e6:.1f} MB, {points * len(machines)} r
 ```
 
 
-**Evidence:** [Task What is IoT](#task-what-is-iot)
+**Evidence:** [Embedded versus client/server database explanation](#lg4)
 <a id="task-inspirations"></a>
 
 <a id="lg6"></a>
@@ -478,6 +495,7 @@ Always compare the query with the table schema and intended time range, then tes
 
 
 
+<a id="reflection-1"></a>
 ## Reflection 1
 
 Group Reflection on Module 01: Introduction and Local-First
