@@ -50,8 +50,7 @@ louay -https://github.com/louayXO
 
 Favour Atem -https://github.com/Favouratem
 
-John Manu Opoku
-
+John Manu Opoku-https://github.com/natureblackmore-20/Database_Protfolio
 
 
 <a id="lg3"></a>
